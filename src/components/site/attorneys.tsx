@@ -1,18 +1,20 @@
 import Image from "next/image";
 import portrait from "../../../public/images/dra-eunice.png";
 import { site } from "@/lib/site";
-import { WhatsAppIcon } from "./whatsapp-icon";
 
 export function Attorneys() {
   return (
     <section id="dra-eunice" className="relative bg-surface py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="mb-12 max-w-2xl lg:mb-16" data-animate>
+        <div className="mb-12 max-w-3xl lg:mb-16" data-animate>
           <p className="eyebrow">Quem conduz</p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.03em] text-petroleum sm:text-5xl lg:text-[3.5rem]">
-            {site.lawyer.name}
+          <h2 className="mt-4 font-serif text-4xl font-bold tracking-[-0.03em] text-petroleum sm:text-5xl lg:text-[3.25rem]">
+            Experiência jurídica com proximidade e propósito
           </h2>
-          <p className="mt-3 text-[12px] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
+          <p className="mt-4 font-serif text-xl font-medium tracking-tight text-petroleum">
+            {site.lawyer.name}
+          </p>
+          <p className="mt-2 text-[12px] font-semibold tracking-[0.18em] text-muted-foreground uppercase">
             {site.lawyer.oab}
           </p>
         </div>
@@ -44,20 +46,46 @@ export function Attorneys() {
           </div>
 
           <div data-animate>
-            <p className="font-serif text-[1.65rem] leading-snug font-medium tracking-[-0.02em] text-petroleum sm:text-3xl">
-              Uma advocacia feita de escuta, responsabilidade e{" "}
-              <em className="text-gold-gradient italic">proximidade</em>.
+            <p className="font-serif text-[1.65rem] leading-snug font-semibold tracking-[-0.02em] text-petroleum sm:text-3xl">
+              Uma advocacia construída para compreender pessoas e oferecer{" "}
+              <em className="text-gold-gradient italic">orientação</em> adequada
+              a cada situação.
             </p>
-            <p className="body-copy mt-6">{site.lawyer.formation}</p>
-            <p className="body-copy mt-4">
-              A experiência foi construída na prática diária: audiências,
-              negociações, peças e recursos — sempre com atendimento
-              individualizado e comunicação transparente.
+            <p className="body-copy mt-6">
+              Formada em Direito pela{" "}
+              <strong className="font-semibold text-petroleum">
+                Pontifícia Universidade Católica do Paraná – PUC/PR, campus
+                Maringá
+              </strong>
+              , e pós-graduada em{" "}
+              <strong className="font-semibold text-petroleum">
+                Direito Previdenciário e Direito Trabalhista
+              </strong>
+              , a Dra. Eunice de Almeida Vieira construiu sua trajetória na
+              advocacia com uma atuação pautada pela responsabilidade e
+              compromisso com cada cliente.
             </p>
             <p className="body-copy mt-4">
-              A escolha pelo Direito veio da vontade de defender pessoas e
-              oferecer caminhos concretos em momentos delicados da vida. Essa
-              vocação se confirma no contato direto com cada cliente.
+              Ao longo de sua experiência profissional, atua nas áreas{" "}
+              <strong className="font-semibold text-petroleum">
+                Trabalhista, Previdenciária, Cível, Direito do Consumidor,
+                Família e Sucessões e Criminal
+              </strong>
+              , aliando conhecimento técnico à experiência prática em
+              audiências, negociações, elaboração de peças e recursos.
+            </p>
+            <p className="body-copy mt-4">
+              Mais do que compreender o processo, sua atuação busca compreender{" "}
+              <strong className="font-medium text-petroleum">
+                a realidade de cada pessoa e o que está por trás de cada demanda
+              </strong>
+              . Por isso, o atendimento é individualizado, transparente e
+              próximo, permitindo que o cliente tenha clareza sobre suas opções
+              e acompanhe cada etapa de sua questão jurídica.
+            </p>
+            <p className="mt-8 font-serif text-xl leading-snug font-semibold tracking-[-0.02em] text-petroleum sm:text-[1.35rem]">
+              Uma advocacia técnica, acessível e humana, com orientação clara
+              em cada etapa.
             </p>
 
             <dl className="mt-10 grid gap-6 border-t border-border pt-8 sm:grid-cols-3">
@@ -86,16 +114,6 @@ export function Attorneys() {
                 </dd>
               </div>
             </dl>
-
-            <a
-              href={site.contact.whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-10 inline-flex items-center gap-2 rounded-full bg-petroleum px-7 py-3.5 text-[13px] font-semibold text-primary-foreground transition-[transform,background-color] duration-150 ease-out hover:bg-petroleum-deep active:scale-[0.97]"
-            >
-              <WhatsAppIcon size={16} />
-              Conversar com a Dra. Eunice
-            </a>
           </div>
         </div>
       </div>

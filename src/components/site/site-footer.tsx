@@ -1,12 +1,14 @@
 import { site } from "@/lib/site";
 import { InstagramIcon } from "./instagram-icon";
+import { LatticeBackground } from "./lattice-background";
 import { Logo } from "./logo";
 import { WhatsAppIcon } from "./whatsapp-icon";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-petroleum-deep bg-petroleum text-primary-foreground">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">
+    <footer className="relative overflow-hidden border-t border-petroleum-deep bg-petroleum text-primary-foreground">
+      <LatticeBackground id="footer" />
+      <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">
         <div data-animate>
           <Logo inverted />
           <p className="mt-5 max-w-xs text-sm leading-relaxed font-light text-primary-foreground/70">
@@ -41,13 +43,10 @@ export function SiteFooter() {
           </h3>
           <div className="mt-4 grid gap-2 text-sm font-light text-primary-foreground/70">
             <a className="w-fit transition-colors hover:text-gold" href="#servicos">
-              Serviços judiciais
+              Áreas de atuação
             </a>
             <a className="w-fit transition-colors hover:text-gold" href="#dra-eunice">
               Quem conduz
-            </a>
-            <a className="w-fit transition-colors hover:text-gold" href="#diferenciais">
-              Diferenciais
             </a>
             <a className="w-fit transition-colors hover:text-gold" href="#sobre">
               Sobre o escritório
@@ -84,10 +83,10 @@ export function SiteFooter() {
         </div>
       </div>
 
-      <div className="border-t border-primary-foreground/10 px-5 py-5 text-center text-[11px] font-light tracking-wide text-primary-foreground/50">
-        © {new Date().getFullYear()} {site.name}. Conteúdo informativo, em
-        conformidade com as normas de publicidade da OAB. Não constitui
-        promessa de resultado.
+      <div className="relative border-t border-primary-foreground/10 px-5 py-5 text-center text-[11px] font-light tracking-wide text-primary-foreground/50">
+        © {new Date().getFullYear()} {site.name}. Conteúdo de caráter
+        informativo. A publicidade observa as normas éticas aplicáveis à
+        advocacia. Não constitui promessa de resultado.
       </div>
     </footer>
   );

@@ -7,7 +7,7 @@ const values = [
   "Transparência",
   "Comprometimento",
   "Responsabilidade",
-  "Excelência técnica",
+  "Qualificação técnica",
   "Atendimento humanizado",
 ];
 
@@ -20,7 +20,7 @@ export function About() {
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mb-12 max-w-2xl lg:mb-16" data-animate>
           <p className="eyebrow">Sobre o escritório</p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.03em] text-petroleum sm:text-5xl lg:text-[3.15rem]">
+          <h2 className="mt-4 font-serif text-4xl font-bold tracking-[-0.03em] text-petroleum sm:text-5xl lg:text-[3.15rem]">
             EAV — Sociedade Individual de Advocacia
           </h2>
         </div>
@@ -51,12 +51,12 @@ export function About() {
               Sob a condução da Dra. Eunice de Almeida Vieira — OAB/PR 75.311,
               o escritório oferece atendimento próximo, individualizado e
               transparente, nas áreas Trabalhista, Previdenciária, Cível,
-              Família e Sucessões e Criminal.
+              Direito do Consumidor, Família e Sucessões e Criminal.
             </p>
             <p className="body-copy mt-4" data-animate>
               Mais do que acompanhar processos, buscamos compreender cada
-              situação de forma única, oferecendo orientação jurídica clara,
-              estratégia e segurança em todas as etapas.
+              situação de forma única, oferecendo orientação jurídica adequada
+              a cada situação, com análise cuidadosa e acompanhamento próximo.
             </p>
             <p className="body-copy mt-4" data-animate>
               Nossa missão é exercer uma advocacia técnica, acessível e

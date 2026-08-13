@@ -6,7 +6,6 @@ import { PageAnimations } from "@/components/site/page-animations";
 import { PracticeAreas } from "@/components/site/practice-areas";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
-import { Testimonials } from "@/components/site/testimonials";
 
 export default function Home() {
   return (
@@ -16,7 +15,6 @@ export default function Home() {
         <Hero />
         <PracticeAreas />
         <Attorneys />
-        <Testimonials />
         <About />
         <Contact />
       </main>

@@ -7,9 +7,8 @@ import { Logo } from "./logo";
 
 const links = [
   ["Início", "#inicio"],
-  ["Serviços", "#servicos"],
+  ["Áreas de atuação", "#servicos"],
   ["Quem conduz", "#dra-eunice"],
-  ["Diferenciais", "#diferenciais"],
   ["Escritório", "#sobre"],
   ["Contato", "#contato"],
 ] as const;
@@ -18,9 +17,7 @@ export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const root = useRef<HTMLElement>(null);
-  const overlayRef = useRef<HTMLDivElement>(null);
   const panelRef = useRef<HTMLElement>(null);
-  const timeline = useRef<gsap.core.Timeline | null>(null);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
   const wasOpen = useRef(false);
@@ -58,71 +55,12 @@ export function SiteHeader() {
             { autoAlpha: 0, y: -12 },
             { autoAlpha: 1, y: 0, duration: 0.42, stagger: 0.06 },
             "-=0.28",
-          )
-          .fromTo(
-            "[data-header='menu']",
-            { autoAlpha: 0, y: -10 },
-            { autoAlpha: 1, y: 0, duration: 0.4 },
-            0.12,
           );
       });
 
       return () => mm.revert();
     },
     { scope: root },
-  );
-
-  useGSAP(
-    () => {
-      const overlay = overlayRef.current;
-      const panel = panelRef.current;
-      if (!overlay || !panel) return;
-
-      gsap.set(overlay, { autoAlpha: 0 });
-      gsap.set(panel, { xPercent: 100 });
-      gsap.set(".mobile-link", { autoAlpha: 0, y: 18 });
-      gsap.set(".mobile-meta", { autoAlpha: 0, y: 12 });
-
-      timeline.current = gsap
-        .timeline({ paused: true })
-        .to(overlay, {
-          autoAlpha: 1,
-          duration: 0.32,
-          ease: "power2.out",
-        })
-        .to(
-          panel,
-          {
-            xPercent: 0,
-            duration: 0.45,
-            ease: "power3.out",
-          },
-          0.04,
-        )
-        .to(
-          ".mobile-link",
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.4,
-            stagger: 0.055,
-            ease: "power3.out",
-          },
-          0.18,
-        )
-        .to(
-          ".mobile-meta",
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration: 0.35,
-            stagger: 0.06,
-            ease: "power3.out",
-          },
-          0.38,
-        );
-    },
-    { scope: overlayRef },
   );
 
   useEffect(() => {
@@ -133,22 +71,6 @@ export function SiteHeader() {
   }, []);
 
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const tl = timeline.current;
-
-    if (reduce) {
-      gsap.set(overlayRef.current, { autoAlpha: open ? 1 : 0 });
-      gsap.set(panelRef.current, { xPercent: open ? 0 : 100 });
-      gsap.set(".mobile-link, .mobile-meta", {
-        autoAlpha: open ? 1 : 0,
-        y: 0,
-      });
-    } else if (open) {
-      tl?.play();
-    } else {
-      tl?.reverse();
-    }
-
     document.body.style.overflow = open ? "hidden" : "";
 
     if (open) {
@@ -183,12 +105,13 @@ export function SiteHeader() {
 
       if (event.key !== "Tab") return;
 
-      const root = panelRef.current;
-      if (!root) return;
+      const panel = panelRef.current;
+      if (!panel) return;
 
       const focusables = [
-        ...root.querySelectorAll<HTMLElement>('a[href], button:not([disabled])'),
-      ].filter((el) => el.tabIndex !== -1);
+        menuButtonRef.current,
+        ...panel.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"),
+      ].filter((el): el is HTMLElement => Boolean(el) && el.tabIndex !== -1);
       if (focusables.length === 0) return;
 
       const first = focusables[0];
@@ -212,91 +135,93 @@ export function SiteHeader() {
   }
 
   return (
-    <header
-      ref={root}
-      className={`sticky top-0 z-60 border-b transition-[background-color,border-color,box-shadow] duration-200 ease-out ${
-        scrolled
-          ? "border-border bg-background/95 shadow-[0_8px_24px_-18px_rgba(15,61,74,0.45)] backdrop-blur-md"
-          : "border-border bg-background/92 backdrop-blur-md"
-      }`}
-    >
-      <div className="relative z-20 mx-auto flex h-20 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <a
-          data-header="logo"
-          href="#inicio"
-          aria-label={site.name}
-          onClick={closeMenu}
-        >
-          <Logo preload />
-        </a>
-
-        <nav
-          className="hidden items-center gap-7 text-[11px] font-semibold tracking-[0.16em] uppercase text-muted-foreground xl:flex"
-          aria-label="Navegação principal"
-        >
-          {links.map(([label, href]) => (
-            <a
-              data-header="link"
-              key={href}
-              href={href}
-              className="relative py-1 transition-colors duration-200 hover:text-petroleum after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-200 after:ease-out-strong hover:after:scale-x-100"
-            >
-              {label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="hidden items-center gap-3 xl:flex">
+    <header ref={root} className="sticky top-0 z-60">
+      <div
+        className={`relative z-20 border-b transition-[background-color,border-color,box-shadow] duration-200 ease-out ${
+          scrolled
+            ? "border-border bg-background/95 shadow-[0_8px_24px_-18px_rgba(15,61,74,0.45)] backdrop-blur-md"
+            : "border-border bg-background/92 backdrop-blur-md"
+        }`}
+      >
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-20 sm:px-8">
           <a
-            data-header="action"
-            href={site.contact.whatsappHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center rounded-full bg-petroleum px-5 py-2.5 text-[11px] font-semibold tracking-widest text-primary-foreground uppercase transition-[transform,background-color] duration-150 ease-out hover:bg-petroleum-deep active:scale-[0.97]"
+            data-header="logo"
+            href="#inicio"
+            aria-label={site.name}
+            onClick={closeMenu}
+            className="shrink-0 overflow-visible"
           >
-            Entrar em contato
+            <Logo preload wordmark />
           </a>
-        </div>
 
-        <button
-          data-header="menu"
-          ref={menuButtonRef}
-          type="button"
-          className="relative grid size-11 place-items-center text-petroleum transition-transform duration-150 ease-out active:scale-95 xl:hidden"
-          onClick={() => setOpen((value) => !value)}
-          aria-label={open ? "Fechar menu" : "Abrir menu"}
-          aria-expanded={open}
-          aria-controls="menu-mobile"
-        >
-          <span className="relative block h-3.5 w-5" aria-hidden>
-            <span
-              className={`absolute left-0 h-px w-full bg-current transition-transform duration-200 ease-out-strong ${
-                open ? "top-1.5 rotate-45" : "top-0"
-              }`}
-            />
-            <span
-              className={`absolute top-1.5 left-0 h-px w-full bg-current transition-opacity duration-150 ${
-                open ? "opacity-0" : "opacity-100"
-              }`}
-            />
-            <span
-              className={`absolute left-0 h-px w-full bg-current transition-transform duration-200 ease-out-strong ${
-                open ? "top-1.5 -rotate-45" : "top-3"
-              }`}
-            />
-          </span>
-        </button>
+          <nav
+            className="hidden items-center gap-7 text-[11px] font-semibold tracking-[0.16em] uppercase text-muted-foreground xl:flex"
+            aria-label="Navegação principal"
+          >
+            {links.map(([label, href]) => (
+              <a
+                data-header="link"
+                key={href}
+                href={href}
+                className="relative py-1 transition-colors duration-200 hover:text-petroleum after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-200 after:ease-out-strong hover:after:scale-x-100"
+              >
+                {label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden items-center gap-3 xl:flex">
+            <a
+              data-header="action"
+              href={site.contact.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center rounded-full bg-petroleum px-5 py-2.5 text-[11px] font-semibold tracking-widest text-primary-foreground uppercase transition-[transform,background-color] duration-150 ease-out hover:bg-petroleum-deep active:scale-[0.97]"
+            >
+              Entrar em contato
+            </a>
+          </div>
+
+          <button
+            ref={menuButtonRef}
+            type="button"
+            className="relative grid size-11 place-items-center text-petroleum transition-transform duration-150 ease-out active:scale-95 xl:hidden"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={open}
+            aria-controls="menu-mobile"
+          >
+            <span className="relative block h-3.5 w-5" aria-hidden>
+              <span
+                className={`absolute left-0 h-px w-full bg-current transition-transform duration-200 ease-out-strong ${
+                  open ? "top-1.5 rotate-45" : "top-0"
+                }`}
+              />
+              <span
+                className={`absolute top-1.5 left-0 h-px w-full bg-current transition-opacity duration-150 ${
+                  open ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`absolute left-0 h-px w-full bg-current transition-transform duration-200 ease-out-strong ${
+                  open ? "top-1.5 -rotate-45" : "top-3"
+                }`}
+              />
+            </span>
+          </button>
+        </div>
       </div>
 
       <div
-        ref={overlayRef}
-        className={`fixed inset-0 z-10 invisible opacity-0 xl:hidden ${
+        className={`fixed inset-x-0 top-16 bottom-0 z-10 xl:hidden sm:top-20 ${
           open ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
         <button
           type="button"
-          className="absolute inset-0 bg-petroleum-deep/55"
+          className={`absolute inset-0 bg-petroleum-deep/55 transition-opacity duration-300 ease-out ${
+            open ? "opacity-100" : "opacity-0"
+          }`}
           aria-label="Fechar menu"
           tabIndex={-1}
           onClick={closeMenu}
@@ -309,11 +234,13 @@ export function SiteHeader() {
           aria-modal="true"
           aria-label="Menu de navegação"
           aria-hidden={!open}
-          className="absolute inset-y-0 right-0 flex w-[min(100%,24rem)] flex-col overflow-y-auto overscroll-contain bg-petroleum px-6 pt-24 pb-10 text-primary-foreground shadow-[-24px_0_60px_-28px_rgba(0,0,0,0.45)]"
+          className={`absolute inset-y-0 right-0 flex w-[min(100%,22rem)] flex-col overflow-y-auto overscroll-contain bg-petroleum px-6 pt-8 pb-10 text-primary-foreground shadow-[-24px_0_60px_-28px_rgba(0,0,0,0.45)] transition-transform duration-300 ease-out-strong ${
+            open ? "translate-x-0" : "translate-x-full"
+          }`}
         >
-          <p className="mobile-meta eyebrow text-gold!">Navegação</p>
+          <p className="eyebrow text-gold!">Navegação</p>
 
-          <ul className="mt-6 flex flex-col gap-1">
+          <ul className="mt-5 flex flex-col gap-1">
             {links.map(([label, href], index) => (
               <li key={href}>
                 <a
@@ -321,12 +248,12 @@ export function SiteHeader() {
                   href={href}
                   tabIndex={open ? 0 : -1}
                   onClick={closeMenu}
-                  className="mobile-link group flex items-baseline gap-4 border-b border-primary-foreground/10 py-4 transition-colors duration-200 hover:border-gold/50"
+                  className="group flex items-baseline gap-4 border-b border-primary-foreground/10 py-3.5 transition-colors duration-200 hover:border-gold/50"
                 >
                   <span className="font-sans text-[11px] font-semibold tracking-[0.22em] text-gold">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <span className="font-serif text-[1.85rem] leading-none font-semibold tracking-tight transition-colors duration-200 group-hover:text-gold">
+                  <span className="font-serif text-[1.55rem] leading-none font-semibold tracking-tight transition-colors duration-200 group-hover:text-gold">
                     {label}
                   </span>
                 </a>
@@ -334,7 +261,7 @@ export function SiteHeader() {
             ))}
           </ul>
 
-          <div className="mobile-meta mt-auto grid gap-3 pt-10">
+          <div className="mt-auto grid gap-3 pt-8">
             <a
               href={site.contact.whatsappHref}
               target="_blank"
@@ -345,7 +272,7 @@ export function SiteHeader() {
             >
               Entrar em contato
             </a>
-            <p className="pt-2 text-center text-[12px] font-light tracking-wide text-primary-foreground/55">
+            <p className="pt-1 text-center text-[12px] font-light tracking-wide text-primary-foreground/55">
               {site.contact.hours}
             </p>
           </div>

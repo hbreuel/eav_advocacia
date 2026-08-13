@@ -24,7 +24,7 @@ const services = [
     icon: Scale,
     title: "Direito Cível",
     description:
-      "Contratos, indenizações, responsabilidade civil e questões patrimoniais, com linguagem clara e estratégia adequada.",
+      "Contratos, indenizações, responsabilidade civil e questões patrimoniais, com linguagem clara e análise cuidadosa.",
   },
   {
     icon: HeartHandshake,
@@ -42,7 +42,7 @@ const services = [
     icon: Shield,
     title: "Direito Criminal",
     description:
-      "Atuação técnica e responsável na defesa criminal, com clareza em cada etapa do atendimento.",
+      "Atuação na área criminal, com orientação clara e acompanhamento de cada etapa.",
   },
 ] as const;
 
@@ -51,13 +51,13 @@ export function PracticeAreas() {
     <section id="servicos" className="relative py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl" data-animate>
-          <p className="eyebrow">Serviços judiciais</p>
-          <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.03em] text-petroleum sm:text-5xl lg:text-[3.35rem]">
+          <p className="eyebrow">Áreas de atuação</p>
+          <h2 className="mt-4 font-serif text-4xl font-bold tracking-[-0.03em] text-petroleum sm:text-5xl lg:text-[3.35rem]">
             Áreas em que atuamos
           </h2>
           <p className="lead mt-5 max-w-lg text-muted-foreground">
             Atendimento presencial e on-line, com orientação acessível para
-            quem precisa compreender o próprio caso com segurança.
+            quem precisa compreender o próprio caso com clareza.
           </p>
         </div>
 
@@ -72,7 +72,7 @@ export function PracticeAreas() {
                   <p className="font-sans text-[11px] font-semibold tracking-[0.22em] text-gold-deep">
                     {String(index + 1).padStart(2, "0")}
                   </p>
-                  <h3 className="mt-1 font-serif text-[1.65rem] leading-tight font-semibold tracking-[-0.02em] text-petroleum">
+                  <h3 className="mt-1 font-serif text-[1.65rem] leading-tight font-bold tracking-[-0.02em] text-petroleum">
                     {title}
                   </h3>
                   <p className="body-copy mt-3">{description}</p>

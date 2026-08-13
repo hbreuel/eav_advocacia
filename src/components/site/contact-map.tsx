@@ -34,7 +34,7 @@ export function ContactMap() {
               <MapPin size={14} strokeWidth={1.75} />
               Escritório
             </p>
-            <h3 className="mt-3 font-serif text-2xl font-semibold tracking-tight text-petroleum">
+            <h3 className="mt-3 font-serif text-2xl font-bold tracking-tight text-petroleum">
               {address.street}
             </h3>
             <p className="mt-1 text-sm font-light text-muted-foreground">
