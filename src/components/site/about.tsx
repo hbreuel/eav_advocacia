@@ -1,23 +1,80 @@
-import { Check } from "lucide-react";
+import Image from "next/image";
+import facade from "../../../public/images/fachada.png";
+import { site } from "@/lib/site";
 
-const values = ["Atendimento personalizado e humano", "Transparência em cada etapa", "Compromisso ético e responsável", "Estratégias adequadas a cada caso"];
+const values = [
+  "Ética",
+  "Transparência",
+  "Comprometimento",
+  "Responsabilidade",
+  "Excelência técnica",
+  "Atendimento humanizado",
+];
 
 export function About() {
   return (
-    <section id="sobre" className="bg-secondary py-20 lg:py-28">
-      <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 sm:px-8 lg:grid-cols-2 lg:gap-20">
-        <div className="relative">
-          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=90" alt="Interior do escritório Lumen Advocacia" className="h-[410px] w-full object-cover" />
-          <div className="absolute -bottom-5 -right-3 border-l-2 border-gold-bright bg-primary p-5 text-primary-foreground sm:right-6"><strong className="font-serif text-3xl text-gold-bright">Desde 2010</strong><span className="mt-1 block text-xs text-primary-foreground/65">presença e consistência</span></div>
+    <section
+      id="sobre"
+      className="relative border-y border-border bg-surface py-20 lg:py-28"
+    >
+      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+        <div className="mb-12 max-w-2xl lg:mb-16" data-animate>
+          <p className="eyebrow">Sobre o escritório</p>
+          <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.03em] text-petroleum sm:text-5xl lg:text-[3.15rem]">
+            EAV — Sociedade Individual de Advocacia
+          </h2>
         </div>
-        <div>
-          <p className="flex items-center gap-3 text-[10px] font-semibold tracking-[.22em] text-accent-foreground"><span aria-hidden className="h-px w-8 bg-gold/60" />O ESCRITÓRIO</p>
-          <h2 className="mt-4 font-serif text-4xl font-bold tracking-tight sm:text-5xl">Uma advocacia construída com confiança.</h2>
-          <p className="mt-6 leading-relaxed text-muted-foreground">A Lumen Advocacia nasceu para oferecer uma atuação técnica, acessível e comprometida com o contexto de cada cliente. Acreditamos que boas decisões jurídicas começam por uma escuta atenta.</p>
-          <p className="mt-4 leading-relaxed text-muted-foreground">Nossa equipe une repertório, atualização constante e uma comunicação clara para conduzir cada demanda com responsabilidade.</p>
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {values.map((value) => <li key={value} className="flex gap-3 text-sm"><span className="mt-0.5 grid size-5 shrink-0 place-items-center bg-accent text-accent-foreground"><Check size={13} strokeWidth={2.5} /></span><span>{value}</span></li>)}
-          </ul>
+
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+          <div className="relative" data-animate>
+            <div className="absolute -inset-3 border border-gold/50" aria-hidden />
+            <div className="relative aspect-3/2 overflow-hidden bg-petroleum">
+              <Image
+                src={facade}
+                alt={`Fachada da ${site.shortName} em ${site.contact.address.city}`}
+                fill
+                sizes="(min-width: 1024px) 560px, 90vw"
+                className="object-cover object-center"
+              />
+            </div>
+            <p className="mt-5 text-[12px] tracking-[0.14em] text-muted-foreground uppercase">
+              {site.contact.address.street} · {site.contact.address.city}
+            </p>
+          </div>
+
+          <div>
+            <p className="body-copy text-[1.05rem]" data-animate>
+              A EAV — Sociedade Individual de Advocacia atua com compromisso,
+              ética e responsabilidade na defesa dos direitos de seus clientes.
+            </p>
+            <p className="body-copy mt-4" data-animate>
+              Sob a condução da Dra. Eunice de Almeida Vieira — OAB/PR 75.311,
+              o escritório oferece atendimento próximo, individualizado e
+              transparente, nas áreas Trabalhista, Previdenciária, Cível,
+              Família e Sucessões e Criminal.
+            </p>
+            <p className="body-copy mt-4" data-animate>
+              Mais do que acompanhar processos, buscamos compreender cada
+              situação de forma única, oferecendo orientação jurídica clara,
+              estratégia e segurança em todas as etapas.
+            </p>
+            <p className="body-copy mt-4" data-animate>
+              Nossa missão é exercer uma advocacia técnica, acessível e
+              humana, sempre com respeito, dedicação e compromisso com cada
+              cliente.
+            </p>
+            <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+              {values.map((value) => (
+                <li
+                  key={value}
+                  data-animate
+                  className="border-l border-gold/60 pl-4 text-sm font-medium tracking-wide text-petroleum"
+                >
+                  {value}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>

@@ -1,14 +1,94 @@
-import { MapPin, Scale } from "lucide-react";
+import { site } from "@/lib/site";
+import { InstagramIcon } from "./instagram-icon";
+import { Logo } from "./logo";
+import { WhatsAppIcon } from "./whatsapp-icon";
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-primary-foreground/10 bg-primary text-primary-foreground">
+    <footer className="border-t border-petroleum-deep bg-petroleum text-primary-foreground">
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">
-        <div><div className="flex items-center gap-3"><span className="grid size-10 place-items-center border border-gold/40 text-gold-bright"><Scale size={18} /></span><span className="font-serif text-xl font-bold">LUMEN <small className="block font-sans text-[9px] font-medium tracking-[.2em] text-gold-bright">ADVOCACIA</small></span></div><p className="mt-5 max-w-xs text-sm leading-relaxed text-primary-foreground/60">Atuação jurídica estratégica, próxima e comprometida com decisões responsáveis.</p></div>
-        <div><h3 className="text-xs font-semibold tracking-[.15em] text-gold-bright">NAVEGAÇÃO</h3><div className="mt-4 grid gap-2 text-sm text-primary-foreground/60"><a className="w-fit transition-colors hover:text-primary-foreground" href="#areas">Áreas de atuação</a><a className="w-fit transition-colors hover:text-primary-foreground" href="#sobre">O escritório</a><a className="w-fit transition-colors hover:text-primary-foreground" href="#advogados">Equipe</a><a className="w-fit transition-colors hover:text-primary-foreground" href="#contato">Contato</a></div></div>
-        <div><h3 className="text-xs font-semibold tracking-[.15em] text-gold-bright">ONDE ESTAMOS</h3><p className="mt-4 flex gap-2 text-sm leading-relaxed text-primary-foreground/60"><MapPin size={16} className="shrink-0" />Av. Paulista, 1000 · Bela Vista<br />São Paulo · SP</p></div>
+        <div data-animate>
+          <Logo inverted />
+          <p className="mt-5 max-w-xs text-sm leading-relaxed font-light text-primary-foreground/70">
+            Advocacia técnica, acessível e humana, conduzida pela{" "}
+            {site.lawyer.name} — {site.lawyer.oab}.
+          </p>
+          <div className="mt-5 flex flex-wrap gap-4">
+            <a
+              href={site.contact.whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gold transition-colors hover:text-gold-bright"
+            >
+              <WhatsAppIcon size={16} />
+              {site.contact.phoneDisplay}
+            </a>
+            <a
+              href={site.contact.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-medium text-gold transition-colors hover:text-gold-bright"
+            >
+              <InstagramIcon size={16} />
+              {site.contact.instagramHandle}
+            </a>
+          </div>
+        </div>
+
+        <div data-animate>
+          <h3 className="text-[11px] font-semibold tracking-[0.25em] text-gold uppercase">
+            Navegação
+          </h3>
+          <div className="mt-4 grid gap-2 text-sm font-light text-primary-foreground/70">
+            <a className="w-fit transition-colors hover:text-gold" href="#servicos">
+              Serviços judiciais
+            </a>
+            <a className="w-fit transition-colors hover:text-gold" href="#dra-eunice">
+              Quem conduz
+            </a>
+            <a className="w-fit transition-colors hover:text-gold" href="#diferenciais">
+              Diferenciais
+            </a>
+            <a className="w-fit transition-colors hover:text-gold" href="#sobre">
+              Sobre o escritório
+            </a>
+            <a className="w-fit transition-colors hover:text-gold" href="#contato">
+              Contato
+            </a>
+          </div>
+        </div>
+
+        <div data-animate>
+          <h3 className="text-[11px] font-semibold tracking-[0.25em] text-gold uppercase">
+            Atendimento
+          </h3>
+          <p className="mt-4 text-sm leading-relaxed font-light text-primary-foreground/70">
+            {site.contact.hours}
+          </p>
+          <a
+            href={site.contact.address.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-3 block text-sm leading-relaxed font-light text-primary-foreground/70 transition-colors hover:text-gold"
+          >
+            {site.contact.address.street} — {site.contact.address.complement}
+            <br />
+            {site.contact.address.neighborhood}, {site.contact.address.city}
+          </a>
+          <a
+            href={site.contact.emailHref}
+            className="mt-3 block text-sm font-light text-primary-foreground/70 transition-colors hover:text-gold"
+          >
+            {site.contact.email}
+          </a>
+        </div>
       </div>
-      <div className="border-t border-primary-foreground/10 px-5 py-5 text-center text-xs text-primary-foreground/45">© 2026 Lumen Advocacia. Conteúdo informativo em conformidade com o Provimento OAB nº 205/2021.</div>
+
+      <div className="border-t border-primary-foreground/10 px-5 py-5 text-center text-[11px] font-light tracking-wide text-primary-foreground/50">
+        © {new Date().getFullYear()} {site.name}. Conteúdo informativo, em
+        conformidade com as normas de publicidade da OAB. Não constitui
+        promessa de resultado.
+      </div>
     </footer>
   );
 }

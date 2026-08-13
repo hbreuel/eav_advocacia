@@ -1,24 +1,26 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Montserrat } from "next/font/google";
+import { WhatsAppButton } from "@/components/site/whatsapp-button";
+import { site } from "@/lib/site";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
 });
 
 export const metadata: Metadata = {
-  title: "Lumen Advocacia | Assessoria Jurídica Estratégica",
+  title: `${site.shortName} | ${site.lawyer.name}`,
   description:
-    "Atuação jurídica estratégica, próxima e personalizada para pessoas e empresas.",
+    "EAV — Sociedade Individual de Advocacia, conduzida pela Dra. Eunice de Almeida Vieira, OAB/PR 75.311. Atendimento próximo em Direito Trabalhista, Previdenciário, Cível, Consumidor, Família e Sucessões e Criminal.",
 };
 
 export default function RootLayout({
@@ -29,9 +31,12 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`${inter.variable} ${playfair.variable} h-full antialiased`}
+      className={`js ${montserrat.variable} ${cormorant.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        {children}
+        <WhatsAppButton />
+      </body>
     </html>
   );
 }

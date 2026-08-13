@@ -1,31 +1,90 @@
-import { Building2, BriefcaseBusiness, Gavel, Handshake, House, Users } from "lucide-react";
+import {
+  Briefcase,
+  Building2,
+  HeartHandshake,
+  Scale,
+  Shield,
+  Users,
+} from "lucide-react";
 
-const areas = [
-  [Gavel, "Direito Civil", "Contratos, responsabilidade civil, indenizações e relações patrimoniais."],
-  [Building2, "Direito Empresarial", "Assessoria para negócios, sócios, contratos e desafios corporativos."],
-  [House, "Direito Imobiliário", "Operações, regularização e disputas que envolvem imóveis."],
-  [Users, "Família e Sucessões", "Orientação objetiva e sensível em decisões pessoais e familiares."],
-  [BriefcaseBusiness, "Relações de Trabalho", "Prevenção e solução de questões trabalhistas para empresas e profissionais."],
-  [Handshake, "Contratos e Negociação", "Estruturas seguras para relações comerciais e particulares."],
+const services = [
+  {
+    icon: Briefcase,
+    title: "Direito Trabalhista",
+    description:
+      "Orientação em relações de trabalho, verbas, rescisões e demais demandas da vida profissional.",
+  },
+  {
+    icon: Building2,
+    title: "Direito Previdenciário",
+    description:
+      "Aposentadorias, benefícios, revisões e defesa dos direitos previdenciários, com análise cuidadosa de cada caso.",
+  },
+  {
+    icon: Scale,
+    title: "Direito Cível",
+    description:
+      "Contratos, indenizações, responsabilidade civil e questões patrimoniais, com linguagem clara e estratégia adequada.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Direito do Consumidor",
+    description:
+      "Apoio em cobranças indevidas, falhas na prestação de serviços e demais relações de consumo.",
+  },
+  {
+    icon: Users,
+    title: "Família e Sucessões",
+    description:
+      "Divórcio, guarda, pensão, inventário e temas familiares, com sensibilidade e acompanhamento próximo.",
+  },
+  {
+    icon: Shield,
+    title: "Direito Criminal",
+    description:
+      "Atuação técnica e responsável na defesa criminal, com clareza em cada etapa do atendimento.",
+  },
 ] as const;
 
 export function PracticeAreas() {
   return (
-    <section id="areas" className="bg-primary py-20 text-primary-foreground lg:py-28">
+    <section id="servicos" className="relative py-20 lg:py-28">
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
-        <div className="max-w-2xl">
-          <p className="flex items-center gap-3 text-[10px] font-semibold tracking-[.22em] text-gold-bright"><span aria-hidden className="h-px w-8 bg-gold-bright/60" />ÁREAS DE ATUAÇÃO</p>
-          <h2 className="mt-4 font-serif text-4xl font-bold tracking-tight sm:text-5xl">Conhecimento aplicado ao seu contexto.</h2>
-          <p className="mt-5 max-w-xl leading-relaxed text-primary-foreground/65">Atuamos em áreas complementares do Direito para oferecer orientação consistente, preventiva e contenciosa.</p>
+        <div className="max-w-2xl" data-animate>
+          <p className="eyebrow">Serviços judiciais</p>
+          <h2 className="mt-4 font-serif text-4xl font-semibold tracking-[-0.03em] text-petroleum sm:text-5xl lg:text-[3.35rem]">
+            Áreas em que atuamos
+          </h2>
+          <p className="lead mt-5 max-w-lg text-muted-foreground">
+            Atendimento presencial e on-line, com orientação acessível para
+            quem precisa compreender o próprio caso com segurança.
+          </p>
         </div>
-        <div className="mt-14 grid border-l border-t border-primary-foreground/15 sm:grid-cols-2 lg:grid-cols-3">
-          {areas.map(([Icon, title, description]) => <article key={title} className="group relative border-b border-r border-primary-foreground/15 p-7 transition-colors duration-200 hover:bg-primary-foreground/[0.05]">
-            <span aria-hidden className="absolute inset-x-0 top-0 h-0.5 origin-left scale-x-0 bg-gold-bright transition-transform duration-200 ease-(--ease-out-strong) group-hover:scale-x-100" />
-            <Icon size={25} strokeWidth={1.5} className="text-gold-bright" />
-            <h3 className="mt-8 font-serif text-2xl font-bold">{title}</h3>
-            <p className="mt-3 text-sm leading-relaxed text-primary-foreground/60">{description}</p>
-          </article>)}
-        </div>
+
+        <ul className="mt-14 grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+          {services.map(({ icon: Icon, title, description }, index) => (
+            <li key={title} className="group relative" data-animate>
+              <div className="flex items-start gap-4">
+                <span className="mt-1 grid size-11 shrink-0 place-items-center border border-gold/60 text-gold-deep transition-colors duration-200 group-hover:border-gold group-hover:text-petroleum">
+                  <Icon size={22} strokeWidth={1.4} />
+                </span>
+                <div>
+                  <p className="font-sans text-[11px] font-semibold tracking-[0.22em] text-gold-deep">
+                    {String(index + 1).padStart(2, "0")}
+                  </p>
+                  <h3 className="mt-1 font-serif text-[1.65rem] leading-tight font-semibold tracking-[-0.02em] text-petroleum">
+                    {title}
+                  </h3>
+                  <p className="body-copy mt-3">{description}</p>
+                </div>
+              </div>
+              <span
+                aria-hidden
+                className="mt-8 block h-px bg-gradient-to-r from-gold/50 to-transparent"
+              />
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

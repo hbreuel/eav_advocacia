@@ -1,16 +1,12 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -19,75 +15,160 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
   --color-gold: var(--gold);
   --color-gold-bright: var(--gold-bright);
+  --color-gold-deep: var(--gold-deep);
+  --color-surface: var(--surface);
+  --color-petroleum: var(--petroleum);
+  --color-petroleum-deep: var(--petroleum-deep);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) * 1.4);
   --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 :root {
   color-scheme: light;
-  /* Papel quente, tinta azul-marinho e dourado discreto. */
-  --background: oklch(0.985 0.005 85);
-  --foreground: oklch(0.24 0.025 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.025 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.025 260);
-  --primary: oklch(0.26 0.045 260);
-  --primary-foreground: oklch(0.98 0.008 85);
-  --secondary: oklch(0.955 0.008 85);
-  --secondary-foreground: oklch(0.28 0.03 260);
-  --muted: oklch(0.955 0.008 85);
-  --muted-foreground: oklch(0.47 0.02 260);
-  --accent: oklch(0.93 0.035 90);
-  --accent-foreground: oklch(0.42 0.08 80);
-  --destructive: oklch(0.57 0.24 27);
-  --border: oklch(0.89 0.012 85);
-  --input: oklch(0.89 0.012 85);
-  --ring: oklch(0.72 0.115 85);
-  --gold: oklch(0.72 0.115 85);
-  --gold-bright: oklch(0.8 0.13 88);
-  --radius: 0.375rem;
-}
-
-.dark {
-  color-scheme: dark;
-  --background: oklch(0.19 0.03 260);
-  --foreground: oklch(0.97 0.005 85);
-  --card: oklch(0.24 0.035 260);
-  --card-foreground: oklch(0.97 0.005 85);
-  --popover: oklch(0.24 0.035 260);
-  --popover-foreground: oklch(0.97 0.005 85);
-  --primary: oklch(0.8 0.13 88);
-  --primary-foreground: oklch(0.22 0.04 260);
-  --secondary: oklch(0.27 0.035 260);
-  --secondary-foreground: oklch(0.97 0.01 85);
-  --muted: oklch(0.27 0.035 260);
-  --muted-foreground: oklch(0.72 0.02 260);
-  --accent: oklch(0.32 0.05 260);
-  --accent-foreground: oklch(0.85 0.12 88);
-  --border: oklch(1 0 0 / 14%);
-  --input: oklch(1 0 0 / 17%);
-  --ring: oklch(0.8 0.13 88);
+  --background: #f6f3ee;
+  --foreground: #14343d;
+  --surface: #efeae2;
+  --card: #fffcf8;
+  --card-foreground: #14343d;
+  --primary: #0f3d4a;
+  --primary-foreground: #f6f3ee;
+  --secondary: #e8e1d6;
+  --secondary-foreground: #14343d;
+  --muted: #e8e1d6;
+  --muted-foreground: #5d6f75;
+  --accent: #efeae2;
+  --accent-foreground: #9a7428;
+  --border: rgba(15, 61, 74, 0.12);
+  --input: rgba(15, 61, 74, 0.18);
+  --ring: #c9a448;
+  --gold: #c9a448;
+  --gold-bright: #e2c56a;
+  --gold-deep: #9a7428;
+  --petroleum: #0f3d4a;
+  --petroleum-deep: #0a2e38;
+  --radius: 0.25rem;
 }
 
 @layer base {
-  * { @apply border-border outline-ring/50; }
-  body { @apply bg-background text-foreground font-sans; }
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif), Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.12;
+    color: var(--petroleum);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
-html { scroll-behavior: smooth; }
-::selection { background: var(--gold); color: var(--primary); }
+::selection {
+  background: var(--gold);
+  color: var(--petroleum);
+}
+
+.eyebrow {
+  font-family: var(--font-sans), ui-sans-serif, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold-deep);
+}
+
+.lead {
+  font-weight: 300;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  letter-spacing: 0.01em;
+}
+
+.body-copy {
+  font-weight: 300;
+  font-size: 0.9875rem;
+  line-height: 1.75;
+  color: var(--muted-foreground);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(180deg, #ead58a 0%, #c9a448 48%, #8f6e22 100%);
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-gold-gradient {
+  background: linear-gradient(
+    165deg,
+    #ead58a 0%,
+    #d4b45c 28%,
+    #c9a448 52%,
+    #b08a2e 78%,
+    #d7b85f 100%
+  );
+}
+
+.hero-pattern {
+  opacity: 0.1;
+  mask-image: radial-gradient(
+    ellipse 88% 78% at 58% 46%,
+    #000 28%,
+    rgb(0 0 0 / 0.55) 68%,
+    rgb(0 0 0 / 0.18) 100%
+  );
+}
+
+html.js [data-animate],
+html.js [data-hero],
+html.js [data-header] {
+  opacity: 0;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; }
+  html {
+    scroll-behavior: auto;
+  }
+
+  html.js [data-animate],
+  html.js [data-hero],
+  html.js [data-header] {
+    opacity: 1;
+    transform: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
 }
