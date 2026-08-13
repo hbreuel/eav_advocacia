@@ -111,7 +111,7 @@ export function SiteHeader() {
       const focusables = [
         menuButtonRef.current,
         ...panel.querySelectorAll<HTMLElement>("a[href], button:not([disabled])"),
-      ].filter((el): el is HTMLElement => Boolean(el) && el.tabIndex !== -1);
+      ].filter((el): el is HTMLElement => el != null && el.tabIndex !== -1);
       if (focusables.length === 0) return;
 
       const first = focusables[0];
