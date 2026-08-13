@@ -113,8 +113,8 @@ export function Hero() {
     >
       <LatticeBackground id="hero" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 py-10 sm:px-8 sm:py-14 lg:min-h-[min(88vh,840px)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:py-20">
-        <div className="flex max-w-136 flex-col">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 py-10 sm:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] sm:gap-6 sm:px-8 sm:py-12 md:gap-10 md:py-16 lg:min-h-[min(88vh,840px)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:py-20">
+        <div className="flex min-w-0 max-w-136 flex-col">
           <p
             data-hero="eyebrow"
             className="eyebrow flex items-center gap-3 text-[0.6875rem] text-gold! sm:text-[0.75rem]"
@@ -124,7 +124,7 @@ export function Hero() {
           </p>
           <h1
             data-hero="title"
-            className="mt-4 grid font-serif text-[clamp(2.05rem,8vw,3.3rem)] leading-[1.05] font-bold tracking-[-0.035em] text-primary-foreground sm:mt-5 lg:text-[3.9rem]"
+            className="mt-4 grid font-serif text-[clamp(2.05rem,8vw,3.3rem)] leading-[1.05] font-bold tracking-[-0.035em] text-primary-foreground sm:mt-5 sm:text-[clamp(1.7rem,3.4vw+0.55rem,2.85rem)] lg:text-[3.9rem]"
             aria-live="polite"
           >
             {site.slogans.map((slogan, index) => (
@@ -148,7 +148,7 @@ export function Hero() {
             clara, análise cuidadosa de cada caso e acompanhamento em todas as
             etapas.
           </p>
-          <div data-hero="actions" className="mt-6 flex flex-col gap-3 sm:mt-8 sm:flex-row sm:flex-wrap sm:items-center">
+          <div data-hero="actions" className="mt-6 flex flex-col gap-3 sm:mt-8 md:flex-row md:flex-wrap md:items-center">
             <a
               href={site.contact.whatsappHref}
               target="_blank"
@@ -166,9 +166,9 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center pt-2 pb-4 sm:py-6 lg:justify-end lg:py-0">
-          <div data-hero="image" className="mx-auto w-full max-w-sm lg:mx-0 lg:max-w-lg">
-            <div className="relative py-5 lg:px-5">
+        <div className="flex items-center justify-center pt-2 pb-4 sm:justify-end sm:py-0">
+          <div data-hero="image" className="mx-auto w-full max-w-sm sm:mx-0 sm:max-w-none lg:max-w-lg">
+            <div className="relative py-5 sm:px-3 lg:px-5">
               <div
                 aria-hidden
                 className="absolute inset-8 translate-x-3 translate-y-3 border border-gold/35"
@@ -190,7 +190,7 @@ export function Hero() {
                     height={1142}
                     quality={90}
                     preload
-                    sizes="(min-width: 1024px) 512px, (min-width: 640px) 384px, calc(100vw - 2.5rem)"
+                    sizes="(min-width: 1024px) 512px, (min-width: 640px) 36vw, calc(100vw - 2.5rem)"
                     className="size-full object-cover object-center"
                   />
                   <div

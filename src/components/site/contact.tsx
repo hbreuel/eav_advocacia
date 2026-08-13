@@ -27,7 +27,7 @@ const info = [
 
 export function Contact() {
   return (
-    <section id="contato" className="relative py-20 lg:py-28">
+    <section id="contato" className="relative bg-surface py-20 lg:py-28">
       <div className="relative mx-auto max-w-6xl px-5 sm:px-8">
         <div className="max-w-2xl" data-animate>
           <p className="eyebrow">Contato</p>

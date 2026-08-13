@@ -15,7 +15,7 @@ export function About() {
   return (
     <section
       id="sobre"
-      className="relative border-y border-border bg-surface py-20 lg:py-28"
+      className="relative bg-background py-20 lg:py-28"
     >
       <div className="mx-auto max-w-6xl px-5 sm:px-8">
         <div className="mb-12 max-w-2xl lg:mb-16" data-animate>
