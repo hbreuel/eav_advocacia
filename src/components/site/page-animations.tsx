@@ -19,6 +19,8 @@ export function PageAnimations({ children }: { children: ReactNode }) {
       });
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
+        const root = scope.current;
+
         ScrollTrigger.batch("[data-animate]", {
           start: "top 88%",
           once: true,
@@ -38,6 +40,21 @@ export function PageAnimations({ children }: { children: ReactNode }) {
               },
             );
           },
+        });
+
+        const revealInView = () => {
+          if (!root) return;
+
+          gsap.utils.toArray<HTMLElement>("[data-animate]", root).forEach((el) => {
+            if (ScrollTrigger.isInViewport(el, 0.12)) {
+              gsap.set(el, { autoAlpha: 1, y: 0, clearProps: "transform" });
+            }
+          });
+        };
+
+        requestAnimationFrame(() => {
+          ScrollTrigger.refresh();
+          revealInView();
         });
       });
 

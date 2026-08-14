@@ -1,17 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { navLinks, siteRoutes } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { Logo } from "./logo";
-
-const links = [
-  ["Início", "#inicio"],
-  ["Áreas de atuação", "#servicos"],
-  ["Quem conduz", "#dra-eunice"],
-  ["Escritório", "#sobre"],
-  ["Contato", "#contato"],
-] as const;
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
@@ -144,29 +138,29 @@ export function SiteHeader() {
         }`}
       >
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:h-20 sm:px-8">
-          <a
+          <Link
             data-header="logo"
-            href="#inicio"
+            href={siteRoutes.home.path}
             aria-label={site.name}
             onClick={closeMenu}
             className="shrink-0 overflow-visible"
           >
             <Logo preload wordmark />
-          </a>
+          </Link>
 
           <nav
             className="hidden items-center gap-7 text-[11px] font-semibold tracking-[0.16em] uppercase text-muted-foreground xl:flex"
             aria-label="Navegação principal"
           >
-            {links.map(([label, href]) => (
-              <a
+            {navLinks.map(({ label, path }) => (
+              <Link
                 data-header="link"
-                key={href}
-                href={href}
+                key={path}
+                href={path}
                 className="relative py-1 transition-colors duration-200 hover:text-petroleum after:absolute after:inset-x-0 after:bottom-0 after:h-px after:origin-left after:scale-x-0 after:bg-gold after:transition-transform after:duration-200 after:ease-out-strong hover:after:scale-x-100"
               >
                 {label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -241,11 +235,11 @@ export function SiteHeader() {
           <p className="eyebrow text-gold!">Navegação</p>
 
           <ul className="mt-5 flex flex-col gap-1">
-            {links.map(([label, href], index) => (
-              <li key={href}>
-                <a
+            {navLinks.map(({ label, path }, index) => (
+              <li key={path}>
+                <Link
                   ref={index === 0 ? firstLinkRef : undefined}
-                  href={href}
+                  href={path}
                   tabIndex={open ? 0 : -1}
                   onClick={closeMenu}
                   className="group flex items-baseline gap-4 border-b border-primary-foreground/10 py-3.5 transition-colors duration-200 hover:border-gold/50"
@@ -256,7 +250,7 @@ export function SiteHeader() {
                   <span className="font-serif text-[1.55rem] leading-none font-semibold tracking-tight transition-colors duration-200 group-hover:text-gold">
                     {label}
                   </span>
-                </a>
+                </Link>
               </li>
             ))}
           </ul>

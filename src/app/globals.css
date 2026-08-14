@@ -67,6 +67,16 @@
     scroll-behavior: smooth;
   }
 
+  section[id] {
+    scroll-margin-top: 4rem;
+  }
+
+  @media (min-width: 640px) {
+    section[id] {
+      scroll-margin-top: 5rem;
+    }
+  }
+
   body {
     @apply bg-background font-sans text-foreground antialiased;
     font-weight: 400;

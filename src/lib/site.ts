@@ -1,13 +1,12 @@
 export const site = {
   name: "EAV — Sociedade Individual de Advocacia",
   shortName: "EAV Advocacia",
+  domain: "www.eavadvocacia.com.br",
   lawyer: {
     name: "Dra. Eunice de Almeida Vieira",
     shortName: "Dra. Eunice",
     oab: "OAB/PR 75.311",
     registration: "PR 75.311",
-    formation:
-      "Formada em Direito pela Pontifícia Universidade Católica do Paraná – PUC/PR, campus Maringá.",
     specializations: [
       "Direito Previdenciário",
       "Direito Trabalhista",
@@ -42,7 +41,6 @@ export const site = {
   ],
   contact: {
     phoneDisplay: "(44) 99946-6874",
-    phoneHref: "tel:+5544999466874",
     whatsappHref:
       "https://wa.me/5544999466874?text=Ol%C3%A1%2C%20gostaria%20de%20falar%20com%20a%20EAV%20Advocacia.",
     email: "eunicevieira.adv@gmail.com",
@@ -50,7 +48,6 @@ export const site = {
     instagramUrl: "https://www.instagram.com/eavadvocacia/",
     instagramHandle: "@eavadvocacia",
     hours: "Segunda a sexta · 9h às 11h30 e 13h30 às 17h30",
-    domain: "www.eavadvocacia.com.br",
     address: {
       street: "Av. Montreal, 552",
       complement: "Sala 02",

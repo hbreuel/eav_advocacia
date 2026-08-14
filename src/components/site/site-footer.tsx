@@ -1,3 +1,5 @@
+import Link from "next/link";
+import { navLinks, siteRoutes } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { InstagramIcon } from "./instagram-icon";
 import { LatticeBackground } from "./lattice-background";
@@ -42,18 +44,17 @@ export function SiteFooter() {
             Navegação
           </h3>
           <div className="mt-4 grid gap-2 text-sm font-light text-primary-foreground/70">
-            <a className="w-fit transition-colors hover:text-gold" href="#servicos">
-              Áreas de atuação
-            </a>
-            <a className="w-fit transition-colors hover:text-gold" href="#dra-eunice">
-              Quem conduz
-            </a>
-            <a className="w-fit transition-colors hover:text-gold" href="#sobre">
-              Sobre o escritório
-            </a>
-            <a className="w-fit transition-colors hover:text-gold" href="#contato">
-              Contato
-            </a>
+            {navLinks
+              .filter(({ path }) => path !== siteRoutes.home.path)
+              .map(({ label, path }) => (
+                <Link
+                  key={path}
+                  className="w-fit transition-colors hover:text-gold"
+                  href={path}
+                >
+                  {label === "Escritório" ? "Sobre o escritório" : label}
+                </Link>
+              ))}
           </div>
         </div>
 

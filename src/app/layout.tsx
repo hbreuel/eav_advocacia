@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
-import { site } from "@/lib/site";
+import { StructuredData } from "@/components/site/structured-data";
+import { rootMetadata } from "@/lib/seo";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -16,11 +18,7 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 
-export const metadata: Metadata = {
-  title: `${site.shortName} | ${site.lawyer.name}`,
-  description:
-    "EAV — Sociedade Individual de Advocacia, conduzida pela Dra. Eunice de Almeida Vieira, OAB/PR 75.311. Atuação em Direito Trabalhista, Previdenciário, Cível, Consumidor, Família e Sucessões e Criminal.",
-};
+export const metadata: Metadata = rootMetadata;
 
 export default function RootLayout({
   children,
@@ -33,7 +31,9 @@ export default function RootLayout({
       className={`js ${montserrat.variable} ${cormorant.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <StructuredData />
         {children}
+        <Analytics />
       </body>
     </html>
   );

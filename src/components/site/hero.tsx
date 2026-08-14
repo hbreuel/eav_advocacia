@@ -1,8 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useRef } from "react";
 import { gsap, useGSAP } from "@/lib/gsap";
+import { siteRoutes } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { LatticeBackground } from "./lattice-background";
 
@@ -157,12 +159,12 @@ export function Hero() {
             >
               Entrar em contato
             </a>
-            <a
-              href="#servicos"
+            <Link
+              href={siteRoutes.services.path}
               className="inline-flex items-center justify-center rounded-full border border-primary-foreground/20 px-5 py-3 text-[13px] font-medium text-primary-foreground transition-[border-color,color,transform] duration-150 ease-out hover:border-gold hover:text-gold active:scale-[0.97]"
             >
               Ver áreas de atuação
-            </a>
+            </Link>
           </div>
         </div>
 
