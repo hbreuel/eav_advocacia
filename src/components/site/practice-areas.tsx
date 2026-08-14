@@ -12,19 +12,19 @@ const services = [
     icon: Briefcase,
     title: "Direito Trabalhista",
     description:
-      "Orientação em relações de trabalho, verbas, rescisões e demais demandas da vida profissional.",
+      "Orientação em relações de trabalho, verbas, rescisões e demais conflitos decorrentes das relações de trabalho.",
   },
   {
     icon: Building2,
     title: "Direito Previdenciário",
     description:
-      "Aposentadorias, benefícios, revisões e defesa dos direitos previdenciários, com análise cuidadosa de cada caso.",
+      "Aposentadorias, benefícios, revisões e defesa dos direitos previdenciários.",
   },
   {
     icon: Scale,
     title: "Direito Cível",
     description:
-      "Contratos, indenizações, responsabilidade civil e questões patrimoniais, com linguagem clara e análise cuidadosa.",
+      "Contratos, indenizações, responsabilidade civil e questões patrimoniais.",
   },
   {
     icon: HeartHandshake,
@@ -34,15 +34,15 @@ const services = [
   },
   {
     icon: Users,
-    title: "Família e Sucessões",
+    title: "Direito de Família e Sucessões",
     description:
-      "Divórcio, guarda, pensão, inventário e temas familiares, com sensibilidade e acompanhamento próximo.",
+      "Divórcio, guarda, pensão, inventário e demais temas familiares.",
   },
   {
     icon: Shield,
     title: "Direito Criminal",
     description:
-      "Atuação na área criminal, com orientação clara e acompanhamento de cada etapa.",
+      "Atuação na área criminal, com defesa e acompanhamento em inquéritos, ações penais e audiências.",
   },
 ] as const;
 
@@ -56,8 +56,8 @@ export function PracticeAreas() {
             Áreas em que atuamos
           </h2>
           <p className="lead mt-5 max-w-lg text-muted-foreground">
-            Atendimento presencial e on-line, com orientação acessível para
-            quem precisa compreender o próprio caso com clareza.
+            Atendimento presencial e on-line, com orientação para quem
+            precisa compreender o próprio caso com clareza.
           </p>
         </div>
 

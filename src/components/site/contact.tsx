@@ -1,10 +1,21 @@
+import type { ComponentType } from "react";
 import { Clock, Mail, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import { ContactMap } from "./contact-map";
 import { InstagramIcon } from "./instagram-icon";
-import { WhatsAppIcon } from "./whatsapp-icon";
 
-const info = [
+type IconProps = {
+  size?: number;
+  strokeWidth?: number;
+  className?: string;
+};
+
+const info: {
+  icon: ComponentType<IconProps>;
+  title: string;
+  lines: readonly string[];
+  href?: string;
+}[] = [
   {
     icon: Phone,
     title: "Telefone e WhatsApp",
@@ -18,12 +29,17 @@ const info = [
     href: site.contact.emailHref,
   },
   {
+    icon: InstagramIcon,
+    title: "Instagram",
+    lines: [site.contact.instagramHandle],
+    href: site.contact.instagramUrl,
+  },
+  {
     icon: Clock,
     title: "Horário",
     lines: ["Segunda a sexta", "9h às 11h30 · 13h30 às 17h30"],
-    href: undefined,
   },
-] as const;
+];
 
 export function Contact() {
   return (
@@ -38,33 +54,14 @@ export function Contact() {
             Atendimento presencial e on-line. Escolha o canal mais confortável
             para você.
           </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <a
-              href={site.contact.whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-[#25D366] px-4 py-2.5 text-[13px] font-semibold text-white transition-transform duration-150 ease-out hover:brightness-110 active:scale-[0.97]"
-            >
-              <WhatsAppIcon size={16} />
-              WhatsApp
-            </a>
-            <a
-              href={site.contact.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-gold/50 px-4 py-2.5 text-[13px] font-medium text-gold-deep transition-colors duration-150 hover:border-gold hover:text-petroleum"
-            >
-              <InstagramIcon size={16} />
-              {site.contact.instagramHandle}
-            </a>
-          </div>
         </div>
 
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {info.map((item) => {
+            const Icon = item.icon;
             const content = (
               <>
-                <item.icon
+                <Icon
                   size={20}
                   strokeWidth={1.5}
                   className="text-gold-deep"

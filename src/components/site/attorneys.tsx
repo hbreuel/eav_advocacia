@@ -1,5 +1,5 @@
 import Image from "next/image";
-import portrait from "../../../public/images/dra-eunice.png";
+import portrait from "../../../public/images/dra-eunice.jpeg";
 import { site } from "@/lib/site";
 
 export function Attorneys() {
@@ -28,7 +28,7 @@ export function Attorneys() {
                 alt={`${site.lawyer.name} no escritório`}
                 fill
                 sizes="(min-width: 1024px) 420px, 90vw"
-                className="object-cover object-[center_25%]"
+                className="object-cover object-center"
               />
               <div
                 aria-hidden
@@ -37,9 +37,6 @@ export function Attorneys() {
               <div className="absolute inset-x-0 bottom-0 p-6 text-primary-foreground">
                 <p className="font-serif text-2xl leading-none font-semibold tracking-tight">
                   {site.lawyer.shortName}
-                </p>
-                <p className="mt-2 text-[11px] font-semibold tracking-[0.18em] text-gold uppercase">
-                  {site.lawyer.oab}
                 </p>
               </div>
             </div>
@@ -57,19 +54,19 @@ export function Attorneys() {
                 Pontifícia Universidade Católica do Paraná – PUC/PR, campus
                 Maringá
               </strong>
-              , e pós-graduada em{" "}
+              , a Dra. Eunice de Almeida Vieira complementou sua formação com
+              especializações em{" "}
               <strong className="font-semibold text-petroleum">
-                Direito Previdenciário e Direito Trabalhista
+                {site.lawyer.specializations.join(" e ")}
               </strong>
-              , a Dra. Eunice de Almeida Vieira construiu sua trajetória na
-              advocacia com uma atuação pautada pela responsabilidade e
-              compromisso com cada cliente.
+              , áreas em que concentra parte relevante de sua atuação
+              profissional.
             </p>
             <p className="body-copy mt-4">
-              Ao longo de sua experiência profissional, atua nas áreas{" "}
+              Ao longo de sua experiência, atua nas áreas{" "}
               <strong className="font-semibold text-petroleum">
                 Trabalhista, Previdenciária, Cível, Direito do Consumidor,
-                Família e Sucessões e Criminal
+                Direito de Família e Sucessões e Criminal
               </strong>
               , aliando conhecimento técnico à experiência prática em
               audiências, negociações, elaboração de peças e recursos.
@@ -79,39 +76,50 @@ export function Attorneys() {
               <strong className="font-medium text-petroleum">
                 a realidade de cada pessoa e o que está por trás de cada demanda
               </strong>
-              . Por isso, o atendimento é individualizado, transparente e
-              próximo, permitindo que o cliente tenha clareza sobre suas opções
-              e acompanhe cada etapa de sua questão jurídica.
+              . Por isso, cada atendimento é conduzido com transparência e
+              respeito, para que o cliente compreenda suas opções e participe
+              das decisões sobre sua questão jurídica.
             </p>
             <p className="mt-8 font-serif text-xl leading-snug font-semibold tracking-[-0.02em] text-petroleum sm:text-[1.35rem]">
-              Uma advocacia técnica, acessível e humana, com orientação clara
-              em cada etapa.
+              Uma advocacia técnica, acessível e humana — pautada pela escuta e
+              pelo rigor jurídico.
             </p>
 
-            <dl className="mt-10 grid gap-6 border-t border-border pt-8 sm:grid-cols-3">
-              <div>
+            <dl className="mt-10 grid gap-x-10 gap-y-10 border-t border-border pt-8 sm:grid-cols-2 xl:grid-cols-4">
+              <div className="min-w-0">
                 <dt className="text-[11px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
                   Formação
                 </dt>
-                <dd className="mt-2 font-serif text-2xl font-semibold tracking-tight text-petroleum">
-                  PUC/PR
+                <dd className="stat-value mt-2 whitespace-nowrap">PUC/PR</dd>
+              </div>
+
+              <div className="min-w-0">
+                <dt className="text-[11px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
+                  Especializações
+                </dt>
+                <dd className="mt-2 space-y-1">
+                  {site.lawyer.specializations.map((item) => (
+                    <span key={item} className="stat-value block">
+                      {item}
+                    </span>
+                  ))}
                 </dd>
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <dt className="text-[11px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
                   Inscrição
                 </dt>
-                <dd className="mt-2 font-serif text-2xl font-semibold tracking-tight text-gold-deep">
-                  {site.lawyer.oab}
+                <dd className="stat-value mt-2 whitespace-nowrap text-gold-deep">
+                  {site.lawyer.registration}
                 </dd>
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <dt className="text-[11px] font-semibold tracking-[0.2em] text-muted-foreground uppercase">
                   Atendimento
                 </dt>
-                <dd className="mt-2 font-serif text-2xl font-semibold tracking-tight text-petroleum">
-                  Presencial e on-line
-                </dd>
+                <dd className="stat-value mt-2">Presencial e on{"\u2011"}line</dd>
               </div>
             </dl>
           </div>

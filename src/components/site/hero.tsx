@@ -113,7 +113,7 @@ export function Hero() {
     >
       <LatticeBackground id="hero" />
 
-      <div className="relative mx-auto grid max-w-6xl items-center gap-8 px-5 py-10 sm:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] sm:gap-6 sm:px-8 sm:py-12 md:gap-10 md:py-16 lg:min-h-[min(88vh,840px)] lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-12 lg:py-20">
+      <div className="relative mx-auto grid max-w-6xl items-center gap-6 px-5 py-8 sm:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] sm:gap-5 sm:px-8 sm:py-10 md:gap-8 md:py-12 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)] lg:gap-10 lg:py-14">
         <div className="flex min-w-0 max-w-136 flex-col">
           <p
             data-hero="eyebrow"
@@ -144,11 +144,11 @@ export function Hero() {
             data-hero="lead"
             className="lead mt-5 max-w-md text-[0.95rem] leading-relaxed text-primary-foreground/70 sm:mt-6 sm:text-[1.0625rem] sm:leading-[1.7]"
           >
-            A {site.shortName} é conduzida pela {site.lawyer.name}. Orientação
-            clara, análise cuidadosa de cada caso e acompanhamento em todas as
-            etapas.
+            A {site.shortName} é conduzida pela {site.lawyer.name}. Atuação
+            técnica, linguagem acessível e dedicação à defesa dos seus
+            interesses.
           </p>
-          <div data-hero="actions" className="mt-6 flex flex-col gap-3 sm:mt-8 md:flex-row md:flex-wrap md:items-center">
+          <div data-hero="actions" className="mt-5 flex flex-col gap-3 sm:mt-6 md:flex-row md:flex-wrap md:items-center">
             <a
               href={site.contact.whatsappHref}
               target="_blank"
@@ -166,9 +166,9 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="flex items-center justify-center pt-2 pb-4 sm:justify-end sm:py-0">
-          <div data-hero="image" className="mx-auto w-full max-w-sm sm:mx-0 sm:max-w-none lg:max-w-lg">
-            <div className="relative py-5 sm:px-3 lg:px-5">
+        <div className="flex items-center justify-center pb-2 sm:justify-end sm:py-0">
+          <div data-hero="image" className="mx-auto w-full max-w-sm sm:mx-0 sm:max-w-none lg:max-w-md">
+            <div className="relative py-3 sm:px-2 lg:px-4">
               <div
                 aria-hidden
                 className="absolute inset-8 translate-x-3 translate-y-3 border border-gold/35"
@@ -184,13 +184,13 @@ export function Hero() {
               <div className="relative border border-gold/70">
                 <div className="relative aspect-13/16 overflow-hidden">
                   <Image
-                    src="/images/dra-eunice-ameida-vieira-forum.png"
+                    src="/images/foto - fórum.png"
                     alt={`${site.lawyer.name} em frente ao Fórum de Maringá`}
-                    width={928}
-                    height={1142}
+                    width={1122}
+                    height={1402}
                     quality={90}
                     preload
-                    sizes="(min-width: 1024px) 512px, (min-width: 640px) 36vw, calc(100vw - 2.5rem)"
+                    sizes="(min-width: 1024px) 448px, (min-width: 640px) 36vw, calc(100vw - 2.5rem)"
                     className="size-full object-cover object-center"
                   />
                   <div
@@ -208,7 +208,7 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="mt-5 flex items-center justify-center gap-3">
+            <div className="mt-4 flex items-center justify-center gap-3">
               <span aria-hidden className="h-px w-8 bg-gold/60" />
               <p className="text-center">
                 <span className="block font-serif text-lg leading-tight">

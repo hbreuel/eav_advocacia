@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Montserrat } from "next/font/google";
-import { WhatsAppButton } from "@/components/site/whatsapp-button";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -20,7 +19,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: `${site.shortName} | ${site.lawyer.name}`,
   description:
-    "EAV — Sociedade Individual de Advocacia, conduzida pela Dra. Eunice de Almeida Vieira, OAB/PR 75.311. Atendimento próximo em Direito Trabalhista, Previdenciário, Cível, Consumidor, Família e Sucessões e Criminal.",
+    "EAV — Sociedade Individual de Advocacia, conduzida pela Dra. Eunice de Almeida Vieira, OAB/PR 75.311. Atuação em Direito Trabalhista, Previdenciário, Cível, Consumidor, Família e Sucessões e Criminal.",
 };
 
 export default function RootLayout({
@@ -35,7 +34,6 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         {children}
-        <WhatsAppButton />
       </body>
     </html>
   );

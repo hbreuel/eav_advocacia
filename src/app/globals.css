@@ -120,6 +120,22 @@
   color: var(--muted-foreground);
 }
 
+.stat-value {
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+  color: var(--petroleum);
+  text-wrap: balance;
+}
+
+@media (min-width: 640px) {
+  .stat-value {
+    font-size: 1.25rem;
+  }
+}
+
 .text-gold-gradient {
   background: linear-gradient(180deg, #ead58a 0%, #c9a448 48%, #8f6e22 100%);
   background-clip: text;

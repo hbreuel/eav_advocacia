@@ -5,8 +5,13 @@ export const site = {
     name: "Dra. Eunice de Almeida Vieira",
     shortName: "Dra. Eunice",
     oab: "OAB/PR 75.311",
+    registration: "PR 75.311",
     formation:
-      "Formada em Direito pela Pontifícia Universidade Católica do Paraná – PUC/PR, campus Maringá, e pós-graduada em Direito Previdenciário e Direito Trabalhista.",
+      "Formada em Direito pela Pontifícia Universidade Católica do Paraná – PUC/PR, campus Maringá.",
+    specializations: [
+      "Direito Previdenciário",
+      "Direito Trabalhista",
+    ] as const,
   },
   slogans: [
     {
@@ -17,7 +22,7 @@ export const site = {
     {
       before: "Orientação jurídica ",
       accent: "clara",
-      after: " e atendimento individualizado.",
+      after: " e resposta dedicada a cada cliente.",
     },
     {
       before: "Conhecimento jurídico com ",
@@ -30,8 +35,8 @@ export const site = {
       after: " e responsabilidade.",
     },
     {
-      before: "Informação, orientação e ",
-      accent: "acompanhamento",
+      before: "Informação, estratégia e ",
+      accent: "presença",
       after: " em cada etapa.",
     },
   ],

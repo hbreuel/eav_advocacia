@@ -49,14 +49,14 @@ export function About() {
             </p>
             <p className="body-copy mt-4" data-animate>
               Sob a condução da Dra. Eunice de Almeida Vieira — OAB/PR 75.311,
-              o escritório oferece atendimento próximo, individualizado e
-              transparente, nas áreas Trabalhista, Previdenciária, Cível,
-              Direito do Consumidor, Família e Sucessões e Criminal.
+              o escritório atua nas áreas Trabalhista, Previdenciária, Cível,
+              Direito do Consumidor, Direito de Família e Sucessões e Criminal,
+              com atendimento presencial e on-line.
             </p>
             <p className="body-copy mt-4" data-animate>
               Mais do que acompanhar processos, buscamos compreender cada
-              situação de forma única, oferecendo orientação jurídica adequada
-              a cada situação, com análise cuidadosa e acompanhamento próximo.
+              situação em sua singularidade, com estratégia jurídica alinhada
+              às necessidades de quem nos procura.
             </p>
             <p className="body-copy mt-4" data-animate>
               Nossa missão é exercer uma advocacia técnica, acessível e
