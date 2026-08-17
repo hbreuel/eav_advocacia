@@ -59,8 +59,6 @@ export const site = {
       lng: -51.88136,
       mapsUrl:
         "https://www.google.com/maps/dir/?api=1&destination=-23.42816,-51.88136",
-      wazeUrl:
-        "https://waze.com/ul?ll=-23.42816,-51.88136&navigate=yes",
       embedUrl:
         "https://www.google.com/maps?q=-23.42816,-51.88136&hl=pt-BR&z=17&output=embed",
     },

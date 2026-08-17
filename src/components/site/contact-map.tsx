@@ -1,4 +1,4 @@
-import { ArrowUpRight, MapPin, Navigation } from "lucide-react";
+import { MapPin, Navigation } from "lucide-react";
 import { site } from "@/lib/site";
 
 const { address } = site.contact;
@@ -44,7 +44,7 @@ export function ContactMap() {
               {address.city}, {address.zip}
             </p>
 
-            <div className="mt-5 flex flex-wrap gap-2">
+            <div className="mt-5">
               <a
                 href={address.mapsUrl}
                 target="_blank"
@@ -53,15 +53,6 @@ export function ContactMap() {
               >
                 <Navigation size={14} strokeWidth={2} />
                 Como chegar
-                <ArrowUpRight size={14} />
-              </a>
-              <a
-                href={address.wazeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-gold/50 px-4 py-2.5 text-[13px] font-medium text-gold-deep transition-colors duration-150 hover:border-gold hover:text-petroleum"
-              >
-                Waze
               </a>
             </div>
           </div>

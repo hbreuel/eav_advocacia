@@ -1,5 +1,5 @@
 import Image from "next/image";
-import portrait from "../../../public/images/dra-eunice.jpeg";
+import portrait from "../../../public/images/foto interior.png";
 import { site } from "@/lib/site";
 
 export function Attorneys() {
